@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Atmel Studio Solution File, Format Version 11.00
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "BENCH_TESTING", "BENCH_TESTING.cppproj", "{1B2E2F08-A001-4BCD-9246-3357C2B8376E}"
+EndProject
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "ESC_Calibration", "C:\Users\colef\OneDrive\Documents\Arduino\ESC_Calibration\ESC_Calibration.cppproj", "{2CC2A623-6723-4388-92C0-A5A1D6CFACE3}"
+EndProject
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "control_board", "C:\Users\colef\OneDrive\Documents\Arduino\control_board\control_board.cppproj", "{6B3AE5F5-1FF2-47D7-9133-EB4F5E718190}"
+EndProject
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "salve_board", "C:\Users\colef\OneDrive\Documents\Arduino\salve_board\salve_board.cppproj", "{3B1F48E5-1D11-46A9-893E-D1430C0C1641}"
+EndProject
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "motorTestingPWM", "C:\Users\colef\OneDrive - St. Clair College\Documents\Arduino\motorTestingPWM\motorTestingPWM.cppproj", "{9A809A3B-F557-43A5-AC22-DEF6BB22DDBB}"
+EndProject
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "setting_a_ds3231", "C:\Users\colef\OneDrive - St. Clair College\Documents\Arduino\setting_a_ds3231\setting_a_ds3231.cppproj", "{2283CEE2-8AC2-4FE8-9275-9652414D09D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B2E2F08-A001-4BCD-9246-3357C2B8376E}.Debug|AVR.ActiveCfg = Debug|AVR
+		{1B2E2F08-A001-4BCD-9246-3357C2B8376E}.Debug|AVR.Build.0 = Debug|AVR
+		{1B2E2F08-A001-4BCD-9246-3357C2B8376E}.Release|AVR.ActiveCfg = Release|AVR
+		{1B2E2F08-A001-4BCD-9246-3357C2B8376E}.Release|AVR.Build.0 = Release|AVR
+		{2CC2A623-6723-4388-92C0-A5A1D6CFACE3}.Debug|AVR.ActiveCfg = Debug|AVR
+		{2CC2A623-6723-4388-92C0-A5A1D6CFACE3}.Debug|AVR.Build.0 = Debug|AVR
+		{2CC2A623-6723-4388-92C0-A5A1D6CFACE3}.Release|AVR.ActiveCfg = Release|AVR
+		{2CC2A623-6723-4388-92C0-A5A1D6CFACE3}.Release|AVR.Build.0 = Release|AVR
+		{6B3AE5F5-1FF2-47D7-9133-EB4F5E718190}.Debug|AVR.ActiveCfg = Debug|AVR
+		{6B3AE5F5-1FF2-47D7-9133-EB4F5E718190}.Debug|AVR.Build.0 = Debug|AVR
+		{6B3AE5F5-1FF2-47D7-9133-EB4F5E718190}.Release|AVR.ActiveCfg = Release|AVR
+		{6B3AE5F5-1FF2-47D7-9133-EB4F5E718190}.Release|AVR.Build.0 = Release|AVR
+		{3B1F48E5-1D11-46A9-893E-D1430C0C1641}.Debug|AVR.ActiveCfg = Debug|AVR
+		{3B1F48E5-1D11-46A9-893E-D1430C0C1641}.Debug|AVR.Build.0 = Debug|AVR
+		{3B1F48E5-1D11-46A9-893E-D1430C0C1641}.Release|AVR.ActiveCfg = Release|AVR
+		{3B1F48E5-1D11-46A9-893E-D1430C0C1641}.Release|AVR.Build.0 = Release|AVR
+		{9A809A3B-F557-43A5-AC22-DEF6BB22DDBB}.Debug|AVR.ActiveCfg = Debug|AVR
+		{9A809A3B-F557-43A5-AC22-DEF6BB22DDBB}.Debug|AVR.Build.0 = Debug|AVR
+		{9A809A3B-F557-43A5-AC22-DEF6BB22DDBB}.Release|AVR.ActiveCfg = Release|AVR
+		{9A809A3B-F557-43A5-AC22-DEF6BB22DDBB}.Release|AVR.Build.0 = Release|AVR
+		{2283CEE2-8AC2-4FE8-9275-9652414D09D7}.Debug|AVR.ActiveCfg = Debug|AVR
+		{2283CEE2-8AC2-4FE8-9275-9652414D09D7}.Debug|AVR.Build.0 = Debug|AVR
+		{2283CEE2-8AC2-4FE8-9275-9652414D09D7}.Release|AVR.ActiveCfg = Release|AVR
+		{2283CEE2-8AC2-4FE8-9275-9652414D09D7}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

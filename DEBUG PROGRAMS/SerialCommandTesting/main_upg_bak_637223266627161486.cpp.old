@@ -1,0 +1,18 @@
+/*
+ * SerialCommandTesting.cpp
+ *
+ * Created: 2020-04-12 10:10:20 PM
+ * Author : colef
+ */ 
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+    /* Replace with your application code */
+    while (1) 
+    {
+    }
+}
+

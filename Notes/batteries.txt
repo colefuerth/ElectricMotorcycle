@@ -1,0 +1,17 @@
+2500mah per cell
+
+6s4p for 10Ah per cell
+24 batteries per cell, $48 per pack
+
+total 6s 10Ah cells in 3s2p config
+$300 cad for total cells
+
+requires 6x24 18650s = 144 batteries
+
+75V 9kw discharge = 120A draw
+
+60A per side
+
+4p is 15A per 18650; with a 2500mAh cell that is 6C discharge
+
+add another two cells for 4s2p of the 6s cells is about 4C peak discharge; less if I use a higher capacity 18650

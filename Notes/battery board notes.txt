@@ -1,0 +1,16 @@
+heaters blow at constant current over 3A
+
+If I use these in 6S, 4P:
+
+6*16 = 96V
+
+3A * 4 = 12A
+
+96*12A = 1152V
+
+ - using the thermocouples is NOT an option; they will blow all the time
+ - ktm e-xc is 3.9kwh and lasts about an hour and a half; 3.9kwh / 1.5h = 2.6kw
+ - 2600kw / 96v = 27A constant current
+27A / 4P = ~7A
+27A / 5P = 5.4A constant
+

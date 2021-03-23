@@ -1,0 +1,135 @@
+-- PROCESSOR BOOTS --
+
+<declare all variables>
+	- include DS3231 libraries
+	- define color values for nextion
+	- define comm header byte for nextion
+	- define serial port for nextion
+	
+	- declare function call memory bits (ONS,Timers,ToggledMemory)
+	
+	- declare arrays for opto inputs
+	- declare constants for opto input pins
+	- declare pointers into the opto arrays
+	- declare speed px input and input pin
+
+	- declare array for analog input values
+	- declare constant arrays for analog input pin values
+	- declare pointers into the analog data array
+
+	- declare arrays for digital/relay outputs
+	- declare constant arrays for relay output pin values
+	- declare pointers into relay arrays
+
+ 	- declare misc variables for modes, clockRoutine, driveSystem, monitorSystem
+
+	- declare a boolean array for active faults flags
+	- declare a constant array for fault levels
+	- declare a constant string array for fault messages
+	- declare misc fault variables
+	- declare pointers into the boolean fault flags array
+
+	- declare misc variables for supporting my nextion functions in place of nextion libraries
+
+	- declare misc debug bits and memory
+
+-- PROGRAM START --
+
+<SETUP>
+	- check if aux 5v power is on, if off, processor disables all external IO
+
+	- setup serial to PC if debugging is enabled
+	- setup setial to nextion if nextion is enabled
+	- setup RTC if aux power is detected
+
+	- declare all IO pin modes (input/output)
+	- write a 1 (relay off) to all relay output pins
+	- put constant power on pins providing power/gnd to relay opto isolators
+
+	- reset logic states on onshots, toggles, and fault flags
+
+	- record the amount of time it took to complete setup and display to serial
+
+	- do an IO update before starting the first scan
+
+<LOOP>
+	- Reset tracker bits for ONS and timers
+	- set io update pulse (50Hz pulse triggers routine io updates)
+	- Call MapInputs
+	- call MapOutputs
+	- call LightRoutine
+	- call DriveSystem
+	- call MonitorSystem
+	- call HMIControl
+	- call debugRoutine
+	- call Faults
+	- if firstscan, reset firstscan bit
+
+<MapInputs>
+	- if 50Hz pulse is true, do an IO update, else, update speed px state and return
+	- every 50hz pulse, update all opto digital inputs and throttle analog value
+	- every 50hz pulse, update one of the 7 nonessential analog pins, cycling through each time
+
+<LightRoutine>
+	- If lights are off, turn off all light bits, update horn status, and return
+	- set turn signals using a flasher bit if their respective side is true
+	- if a turn is false, front idles at true and rear idles at false
+	- Set brake, headlight, and fog light outputs accordingly
+	- set horn output accordingly
+
+<ClockRoutine>
+	- if aux power is on, update RTC value
+
+<DriveSystem>
+	- System will not go into gear unless:
+		- killswitch has been off at least once since boot
+		- killswitch is on
+		- all essential connections are OK
+		- throttle is at idle
+	- check if killswitch has been off since boot
+	- Main motor controller contactor will only be closed if:
+		- killswitch has been off since boot
+		- no level 1 faults are detected
+		- killswitch is on
+	- map throttle output based on ingear and killswitch statuses
+	- map throttlePercent for monitoring/fault purposes based on throttle input value
+
+<MonitorSystem>
+	- record watchdog value
+	- update longest/fastest cycle values
+	- calculate current draw on motor and 12V shunts from analog IO
+	- update total draw in mAh based on motor shunt reading
+	- update vBat value
+	- update individual cell volt values
+	- update front wheel speed from speed PX
+
+<HMIControl>
+	- check for button presses from nextion
+	- update fault window buffer
+	- update elements on the current page only, one at a time on a 50hz pulse, and only update if the value has changed from the last update on that element, or if the current page has changed since the last update on that element
+
+<MapOutputs>
+	- Update outputs if:
+		- an IO update request pulse is read
+		- aux power is on OR debugging is enabled
+
+<Faults>
+	- Check for a fault reset request, if true, reset all fault flags
+	- check for com errors to opto boards, or either side handlebar controls
+	- check watchdog (set for 100ms)
+	- check that throttle value is within bounds (0.5V to 4.5V)
+	- check for overflow on ONS bits
+	- Check that individual cells are above lithium storage voltage, else throw a warning
+	- Check that individual cells are above lithium critical voltage, else throw a level 1 fault
+	- check for any faults present
+	- check for any level 2 faults present
+	- check for any level 1 faults present
+	- count number of active faults
+	- display faults to serial if debugging is active on a PET
+	- check if aux power has failed
+	- check if number of timers or oneshots has changed since previous scans, if yes, throw a level 1 fault
+	- if first scan, record values of timer and ONS tracker bits at the end of scan
+
+
+
+

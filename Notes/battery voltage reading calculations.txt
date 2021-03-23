@@ -1,0 +1,41 @@
+15A shunt:
+drops 75mV at 15A
+ina126p has an Rg of 1.47k, this means Gain = 5 + 80/1.47 = 59
+0.075V * 59 = 4.425V at 15A draw on input
+x / 1024 = 4.425 / 5
+x = ( 4.425 / 5 ) * 1024
+x = 906 on analogread pin
+
+150A Shunt:
+drops 50mV at 150A
+Rg = 1k
+G = 5 + 80k/1k
+G = 85
+50mV * 85 = 4.25V on analog pin at 150A draw
+x = (4.25 / 5) * 1024
+x = 870 at 150A
+
+total vbat: 
+full battery = 24.6V * 4 = 98.4V
+arduino vin = (22.2V * 4)(1k / 23k)
+ = 3.861V
+x = (3.861V / 5V) * 1024
+x = 791 at 88.8V
+
+each cell voltage:	**22K AND 1K WERE USED FOR THIS VOLTAGE DIVIDER, MULTISIM SAYS 3.48V OUT AT 16V/CELL
+22.2v max each cell
+voltage divider using 47k and 2.2k results in:
+vin = 22.2V (1 / (47+1) )
+vin = 0.4625V
+I want 3.5V into ARD to be the goal, because it is a nice even number and I can see well higher or well lower
+3.5 / 0.4625 = 7.57 gain on ina126p
+7.57 = 5 + 80/rg
+2.57 = 80/rg
+80/2.57 = rg
+31kohms = rg
+I will use 20k and 10k in series to accomplish 30k rg
+this means, G=5+(80/30) = 7.667
+V into arduino will be 0.4625*7.667 = 3.546V
+x = (3.546/5) * 1024
+x = 726
+

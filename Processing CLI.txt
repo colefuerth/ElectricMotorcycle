@@ -1,0 +1,8 @@
+*concept*
+ - intercepted strings will be first split into 'terms' as a string array
+ - the first term will be the command, then consecutive terms will be data
+ - ex: 'set CLIDebug true' creates three strings to be fed into the interpreter
+ - first stage checks the first keyword for a valid command
+ - second stage directs the data to the correct method
+ - third stage is a set of methods designed to interpret different commands, one method per command. 
+ - in this example, the second stage would look at "CLIDebug", and either set it according to input, or display the current setting if no valid data is detected for writing

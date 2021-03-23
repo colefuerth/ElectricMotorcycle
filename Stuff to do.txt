@@ -1,0 +1,154 @@
+
+******* HARDWARE **********
+// - test how to gather inputs from the inductive PX
+// - set all wire designations for labelling
+// - figure out how to do wire labels
+// - figure out an alternative to zipties for cable management
+// - Rear and front brakes need to be sensed by the arduino
+ - plastics for the chain guide need to be ordered
+// - mount rear relay and lights
+ - mount motor and controller for demonstration purposes
+
+
+******* ELECTRICAL *******
+// - draw panel layouts and labels for the boards
+// - pin 8 of ethernet to hmi will now carry throttle out pwm
+// - change boards so that ina126p on 15A shunt has an rg of 1.47kohms
+// - change boards so that ina126p on 150A shunt has an rg of 1kOhms
+// - 12V to 5V converter will be powered directly from the 12V shunt, to prevent power loss on a 12V fuse blow
+// - feedback on vbat in buffer is on the wrong pins
+// - test ina126p circuits in multisim
+// - throttle out buffer must be fed 12V on the positive rail for the power amp to function correctly! Otherwise, the opamp takes all the load towards the peak output
+// - move vbat and shunt fuses to the main panel
+// - add -9V battery to power panel
+// - connect motor contactor panel to main panel with CB radio connectors
+// - negative lead on cell 1 sensor needs -9V to function properly
+// - -9v needs a bus to main panel
+// - ORDER SOME DIODES FOR THE ANALOG STACK
+// - after 12v conversion, middle board in stack is no longer needed
+// - rear panel needs connections made
+// - rear lights ground on the frame
+// - 12A shunt is always at MAX voltage, only limited by the diode I stuck on there
+// - rear relay board does not work
+ - ground all the frame sections
+
+
+******* SOFTWARE ********
+// - make an hmi window to cycle through faults
+// - Design an HMI screen concept or three
+? - make a bit for "all status ok"
+? - add hc-05 bluetooth to logging
+// - eeprom values in declaration need reworking; see eeprom excel sheet
+// - add odometer tracking and updating logic
+// - double check power pin settings out to relays
+// - create debug messages for EVERYTHING
+	- Inputs/outputs
+	- modes
+	- live analog readings?
+// - motor shunt now drops all current, so change total current draw to be driven by ONLY motor shunt
+// - analog inputs are now A0, A8-A14; change mapInputs so I no longer need to read A1-A7, A15
+// - ensure that Faults() is run at the very end of the cycle
+// - add a oneshot tracker to make sure it is the same EVERY cycle; if it ever changes, fault the processor
+// - split up the "An essential component lost connection!" fault into the three individual faults
+// - make watchdog 200ms
+// - Make a function to cycle through active faults
+// - remove EEPROM logic; there are no retentive values I wish to keep for now
+// - scrap odometer logic; i dont care enough to include it
+// - rewrite hmi logic so that only one element updates per cycle
+// - fix the mapping on the analog inputs from the circuit stack, after being packaged into ethernet
+// - fix issue where first scan uses one less oneshot bit than used everywhere else
+// - horn doesnt work when lights are off
+// - figure out relay board 3 pin order and vcc/gnd pins
+// - import buffered time output to hmi from hmitesting
+// - redo alarms screen so there are ten slots for faults, which are written to accordingly
+// - test logic where only the active hmi screen has its elements updated
+// - add logic for changing speed modes on ESC based on battery level and a screen on the HMI for settings
+// - do fault testing (disconnect handlebars, opto power, etc)
+// - re-read through all created logic in detail and take note of any suggested changes or debug logic still in place that interferes with operation
+// - make HMI alarm window not red when there is no faults
+// - add a screen for settings and changing esc modes of operation
+// - develop temporary logic on a pwm pin (maybe 12) for controlling the demonstration motor
+// - add brights and fog lights indicators to HMI
+// - page doesnt update when going from stat to alrm
+// - callbacks are not called on main/stat 3 buttons
+// - speed readings are all negative for some unholy reason
+// - fix the RTC smh
+// - nextion doesnt work
+// - cycleActiveFaults displays the time sometimes??
+// - confirm functionality of the throttle input
+// - confirm functionality of motor output
+// - both shunt currents on stat page dont update
+// - pulling the left handlebar ethernet does not pull the contactor?
+// - level 1 faults should all require a fault reset
+// - add a throttle input and output bar to the STAT page
+// - bike goes back into gear if in gear before turning off killswitch
+// - throttle reads out of bounds even when it definitely isnt
+// - when using startPB to exit gear, processor throws a fault
+// - processor hangs after a while if pages change a lot :(
+ - calibrate the shunt readings
+// - drop hmi update rate from 25 to 20
+
+for the future:
+// - add a fault for 'unrecognised serial request'
+ - reimplement eeprom memory for retentive values
+// - add 'total inGear time' to stat screen
+\\ - add an overcurrent fault for the main draw; pull the contactor over 150A draw 	* not being done anymore
+ - turn signals on the HMI
+ - serial commands
+ - add longest, fastest, and most recent scan time values to hmi
+ - add a page where a pin is required to unlock the bike
+ - add a processor info where it displays things like ONS, timers, scan time, scans per second, etc
+ - Speed px will operate by calling an ISR
+
+
+******* DOCUMENTATION *******
+// - add a page for battery sensing and circuits; more INA126P's need to be ordered
+// - update arduino IO sheet according to the new layout
+// - create a letter of transmittal (I hereby submit this report to...)
+// - what is a declaration page smh
+// - update electrical prints with new hmi
+// - arduino drawings are missing A8-A15 pins; we need them for battery sensing and current sensing
+// - throttle output is now on pin 13, pwm
+// - add throttle out power amplifier, on its own page
+// - The battery circuit gets its own page, including the charging circuit
+// - change power distribution page to reference the battery page
+// - add a solenoid in series with the ESC
+// - create drawings of all remaining panel layouts
+// - update all stack drawings
+// - create drawings of relay outputs
+// - update opto drawings to include feedbacks used
+// - change so only opto 1 feeds back power as optoPower; the two are together in a block
+// - add the 150A shunt and sensing circuit to the prints
+// - re-label all pins on the custom circuit drawings to match new configuration
+// -  ask zak what chapters are
+// - update electrical prints; all relays to lights are NO, not NC
+// - Finish updating BOM, and separate into two separate sections, and note that they are separate because they are being paid separately
+// - change prints so that ina126p on 15A shunt has an rg of 1.47kohms
+// - change prints so that ina126p on 150A shunt has an rg of 1kOhms
+// - update negative supply to -9V rail on cell 1 sensor
+// - panel layouts need to go somewhere in here, find out from zak
+// - reprint designed boards
+// - reprint chapters word doc WITHOUT comments enabled
+// - combine sections into groups to make editing faster in pdf form
+// - rotate all autocad drawings 180 degrees
+
+
+******* List of documentation pages in order of submission: *******
+// - Letter of Transmittal							i
+// - Title Page									ii
+// - Declaration page								iii
+// - Table of Contents								iv
+// - List of Figures								v
+// - List of Tables								vi
+// - Acknowledgements								1
+// - Abstract									2
+// - Chapters (e.g., Introduction, Background Theory, System Design, etc.)	3-17
+// - Conclusions  	 							18
+// - References									19
+// - Bibliography								20
+// - Full electrical drawings							21-32
+// - panel layouts								33-36
+// - component pinouts
+// - BOM									37-38
+// - Program flowchart (if applicable)						39-50
+// - Full program listings 							51-74	

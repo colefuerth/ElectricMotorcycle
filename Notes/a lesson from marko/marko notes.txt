@@ -1,0 +1,1 @@
+CA3140E single ended opamp pin compatible with lm741

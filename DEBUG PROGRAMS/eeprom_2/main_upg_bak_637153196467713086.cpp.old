@@ -1,0 +1,18 @@
+/*
+ * eeprom_2.cpp
+ *
+ * Created: 2020-01-22 7:53:50 PM
+ * Author : colef
+ */ 
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+    /* Replace with your application code */
+    while (1) 
+    {
+    }
+}
+
